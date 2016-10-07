@@ -1,0 +1,37 @@
+https://www.interviewbit.com/problems/min-steps-in-infinite-grid/
+/**
+ * @input X : Integer array corresponding to the X co-ordinate
+ * @input n1 : Integer array's ( X ) length
+ * @input Y : Integer array corresponding to the Y co-ordinate
+ * @input n2 : Integer array's ( Y ) length
+ *
+ * Points are represented by (X[i], Y[i])
+ * 
+ * @Output Integer
+ *
+ */
+int coverPoints(int* x, int n1, int* y, int n2) {
+    int a,b,c,d,count=0,i;
+    if(n1==1)
+     return count;
+    a=x[0];
+    b=y[0];
+    i=1;
+    while(i<n1)
+    {
+        c=x[i];
+        d=y[i];
+        
+        int dx=a-c,dy=b-d;
+        if(dx==0 && dy)
+         count+=abs(dy);
+        else if(dy==0 && dx)
+         count+=abs(dx);
+        else if(dx && dy)
+         count+=(abs(dx)>abs(dy))?abs(dx):abs(dy);
+        a=c;
+        b=d;
+        i++;
+    }
+    return count;
+}
